@@ -39,6 +39,10 @@ const meta: Meta<typeof DataTable<User>> = {
 - Provide an informative \`emptyMessage\` for empty states.
         `,
       },
+      // source: {
+      //   type: "code", 
+      //   code: `<DataTable data={data} columns={columns} />`,
+      // },
     },
   },
 };
@@ -47,6 +51,18 @@ export default meta;
 type Story = StoryObj<typeof DataTable<User>>;
 
 export const Basic: Story = { args: { data, columns } };
+Basic.decorators = [
+  (Story) => (
+    <div style={{ maxHeight: 200+"px", overflow: "hidden" }}>
+      <Story />
+    </div>
+  ),
+];
+// Basic.parameters = {
+//   docs: {
+//     canvas: { height: 200 }, 
+//   },
+// };
 
 export const Sortable: Story = { args: { data, columns } };
 

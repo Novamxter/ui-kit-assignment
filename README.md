@@ -64,7 +64,7 @@ npm run storybook
 1.  Clone the repository
 
     ``` bash
-    git clone https://github.com/your-username/ui-kit.git
+    git clone https://github.com/Novamxter/ui-kit-assignment.git
     cd ui-kit
     ```
 
@@ -98,11 +98,15 @@ classes when dark mode is active.
 
 ## Notes
 
--   The project is mainly about **components and their documentation in
-    Storybook**, not a full app.\
--   I have cleaned up unnecessary files and kept only what's needed.\
--   The final deliverables are:
-    -   GitHub repo link\
-    -   Deployed Storybook link (Chromatic / Vercel / Netlify)
+## Notes
+
+- This project focuses only on **building reusable components** and documenting them in Storybook.  
+- I have removed boilerplate/example code (like default Storybook assets and example stories) to keep the repo clean.  
+- Both components (`InputField` and `DataTable`) include multiple variants, states, and accessibility features as per the assignment.  
+- Dark mode is also supported and can be toggled in the Storybook toolbar.  
+- The final deliverables are:  
+  - GitHub repository link: [https://github.com/Novamxter/ui-kit-assignment.git](https://github.com/Novamxter/ui-kit-assignment.git)  
+  - Deployed Storybook link: [https://ui-kit-assignment.vercel.app/?path=/docs/data-display-datatable--docs](https://ui-kit-assignment.vercel.app/?path=/docs/data-display-datatable--docs)  
+
 
 ------------------------------------------------
