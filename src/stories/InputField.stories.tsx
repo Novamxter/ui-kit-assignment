@@ -10,17 +10,42 @@ const meta: Meta<typeof InputField> = {
     docs: {
       description: {
         component: `
-**Usage:**
-- Always provide a \`label\` for accessibility.
-- Use \`helperText\` for hints and \`errorMessage\` for validation issues.
-- For passwords, set \`type="password"\` and enable \`togglePassword\`.
-- Use \`variant\` and \`size\` props for consistent UI.
+InputField component
 
-**Best Practices:**
-- Keep labels short and clear.
-- Don’t overload helper text with long paragraphs.
-- Show error messages only when validation fails.
-- Prefer outlined or filled variants for forms; ghost for minimal UI.
+A reusable input component with support for:
+- Standard HTML input types (text, password, email, etc.)
+- Internal state management for controlled/uncontrolled inputs
+- Helper text, error messages, and accessibility attributes
+- Optional icons or adornments
+
+Props:
+- id: Unique identifier for the input; auto-generated if not provided
+- type: Input type, e.g., 'text', 'password', 'email'
+- label: Label text displayed above the input
+- placeholder: Placeholder text inside the input
+- value: Current value of the input (for controlled inputs)
+- onChange: Callback function triggered on input change
+- helperText: Optional helper text displayed below the input
+- error: Optional error message to display
+- disabled: Disable input interaction if true
+- required: Marks input as required
+- icon: Optional icon to display inside the input
+
+Accessibility:
+- Uses \`aria-describedby\` for helper/error text
+- Uses \`aria-invalid\` when input has errors
+
+Example usage:
+\`\`\`tsx
+<InputField
+  type="email"
+  label="Email"
+  placeholder="Enter your email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  helperText="We'll never share your email."
+/>
+\`\`\`
         `,
       },
     },

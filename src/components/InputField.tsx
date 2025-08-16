@@ -28,7 +28,44 @@ const sizeMap: Record<InputSize, string> = {
   lg: 'h-11 text-base px-4',
 }
 
-export const InputField: React.FC<InputFieldProps> = ({
+/**
+ * InputField component
+ *
+ * A reusable input component with support for:
+ * - Standard HTML input types (text, password, email, etc.)
+ * - Internal state management for controlled/uncontrolled inputs
+ * - Helper text, error messages, and accessibility attributes
+ * - Optional icons or adornments
+ *
+ * Props:
+ * @param {string} id - Unique identifier for the input; auto-generated if not provided
+ * @param {string} type - Input type, e.g., 'text', 'password', 'email'
+ * @param {string} label - Label text displayed above the input
+ * @param {string} placeholder - Placeholder text inside the input
+ * @param {string} value - Current value of the input (for controlled inputs)
+ * @param {function} onChange - Callback function triggered on input change
+ * @param {string} helperText - Optional helper text displayed below the input
+ * @param {string} error - Optional error message to display
+ * @param {boolean} disabled - Disable input interaction if true
+ * @param {boolean} required - Marks input as required
+ * @param {React.ReactNode} icon - Optional icon to display inside the input
+ *
+ * Accessibility:
+ * - Uses `aria-describedby` for helper/error text
+ * - Uses `aria-invalid` when input has errors
+ *
+ * Example usage:
+ * <InputField
+ *   type="email"
+ *   label="Email"
+ *   placeholder="Enter your email"
+ *   value={email}
+ *   onChange={(e) => setEmail(e.target.value)}
+ *   helperText="We'll never share your email."
+ * />
+ */
+
+export function InputField({
   value,
   onChange,
   label,
@@ -44,7 +81,7 @@ export const InputField: React.FC<InputFieldProps> = ({
   clearable = true,
   togglePassword = true,
   id,
-}) => {
+}: InputFieldProps){
   const [internalType, setInternalType] = React.useState(type)
   const inputId = id || React.useId()
   const helpId = helperText ? `${inputId}-help` : undefined

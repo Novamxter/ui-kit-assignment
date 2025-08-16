@@ -24,25 +24,49 @@ const meta: Meta<typeof DataTable<User>> = {
     docs: {
       description: {
         component: `
-**Usage:**
-- Pass an array of data objects via \`data\`.
-- Define columns with \`header\` and \`accessor\`.
-- Enable \`sortable\` on columns where sorting is required.
-- Use \`selectable\` and \`onRowSelect\` for multi-row selection.
-- Show loading with \`loading={true}\` while fetching data.
+DataTable component
 
-**Best Practices:**
-- Always provide a unique row ID via \`getRowId\` for stable selection.
-- Limit the number of columns for better readability on small screens.
-- Avoid overloading tables with too much data; paginate or virtualize if needed.
-- Use concise headers and keep cell content short.
-- Provide an informative \`emptyMessage\` for empty states.
-        `,
+A reusable table component for displaying structured data with features:
+- Column definitions with headers, accessors, and optional sorting
+- Row selection (single or multiple)
+- Loading state while fetching data
+- Empty state message when no data is available
+- Custom column widths and formatting
+
+Props:
+- data: Array of objects representing table rows
+- columns: Array of column definitions, each with:
+    - id: Unique column identifier
+    - header: Column header text
+    - accessor: Key or function to extract cell value
+    - sortable?: Enable column sorting (optional)
+    - width?: Column width (optional)
+- selectable: Enable row selection (default: false)
+- getRowId: Function to return a unique row ID (required if selectable)
+- loading: Show loading spinner (default: false)
+- emptyMessage: Message to display when no rows are available
+
+Accessibility:
+- Rows and cells have proper semantic markup
+- Supports keyboard navigation if selectable
+
+Example usage:
+\`\`\`tsx
+<DataTable
+  data={users}
+  columns={[
+    { id: 'name', header: 'Name', accessor: 'name', sortable: true },
+    { id: 'email', header: 'Email', accessor: 'email' },
+    { id: 'age', header: 'Age', accessor: 'age', sortable: true, width: '80px' },
+  ]}
+  selectable
+  getRowId={(user) => user.id}
+  loading={false}
+  emptyMessage="No users found."
+/>
+\`\`\`
+`,
       },
-      // source: {
-      //   type: "code", 
-      //   code: `<DataTable data={data} columns={columns} />`,
-      // },
     },
   },
 };
@@ -51,18 +75,6 @@ export default meta;
 type Story = StoryObj<typeof DataTable<User>>;
 
 export const Basic: Story = { args: { data, columns } };
-Basic.decorators = [
-  (Story) => (
-    <div style={{ maxHeight: 200+"px", overflow: "hidden" }}>
-      <Story />
-    </div>
-  ),
-];
-// Basic.parameters = {
-//   docs: {
-//     canvas: { height: 200 }, 
-//   },
-// };
 
 export const Sortable: Story = { args: { data, columns } };
 
